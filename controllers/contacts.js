@@ -27,7 +27,7 @@ const updateById = async (req, res) => {
   if (!result) {
     throw HttpError(404, `Contact with ${id} not found`);
   }
-  res.status(201).json(result);
+  res.status(200).json(result);
 };
 
 const updateFavorite = async (req, res) => {
@@ -37,7 +37,7 @@ const updateFavorite = async (req, res) => {
   if (!result) {
     throw HttpError(404, `Contact with ${id} not found`);
   }
-  res.status(201).json(result);
+  res.status(200).json(result);
 };
 
 const deleteById = async (req, res) => {
