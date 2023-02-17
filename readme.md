@@ -8,6 +8,59 @@ The project was created by me and reviewed by the mentor [Nadya Hristuk](https:/
 
 ## API Reference
 
+#### Register
+
+```http
+  POST/api/users/register
+```
+
+| Parameter  | Type     | Description                 |
+| :--------- | :------- | :-------------------------- |
+| `email`    | `string` | **Required**                |
+| `password` | `string` | **Required**. min 6 symbols |
+
+#### Login
+
+```http
+  POST/api/users/login
+```
+
+| Parameter  | Type     | Description                 |
+| :--------- | :------- | :-------------------------- |
+| `email`    | `string` | **Required**                |
+| `password` | `string` | **Required**. min 6 symbols |
+
+#### Get current user
+
+```http
+  GET/api/users/current
+```
+
+| Parameter | Type     | Description  |
+| :-------- | :------- | :----------- |
+| `token`   | `string` | **Required** |
+
+#### Update subscription status
+
+```http
+  PATCH/api/users/
+```
+
+| Parameter      | Type     | Description                        |
+| :------------- | :------- | :--------------------------------- |
+| `token`        | `string` | **Required**                       |
+| `subscription` | `string` | **Required**. "starter" by default |
+
+#### Logout
+
+```http
+  POST/api/users/logout
+```
+
+| Parameter | Type     | Description  |
+| :-------- | :------- | :----------- |
+| `token`   | `string` | **Required** |
+
 #### Get all items
 
 ```http
@@ -84,7 +137,7 @@ TO UPDATE CONTACT'S STATUS THE FOLLOWING FIELD SHOULD BE PROVIDED
 
 **Back** Node.JS, MongoDB.
 
-**Libs:** Express, Joi, Mongoose, Morgan, Dotenv
+**Libs:** Express, Joi, Mongoose, Morgan, Dotenv, BcryptJs, Jsonwebtoken
 
 ## Run Locally
 
