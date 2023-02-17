@@ -1,19 +1,10 @@
-
-# CONTACTS REST API 
+# CONTACTS REST API
 
 Based on Node.js simple REST API for working with the list of contacts, developed within the framework of the GoIT school Node.js studying block.
 
-
-
-
-
-
-
 ## Authors
 
-The project was created by me and reviewed by the mentor [Nadya Hristuk](https://github.com/NadyaHristuk). 
-
-
+The project was created by me and reviewed by the mentor [Nadya Hristuk](https://github.com/NadyaHristuk).
 
 ## API Reference
 
@@ -29,12 +20,12 @@ The project was created by me and reviewed by the mentor [Nadya Hristuk](https:/
   POST/api/contacts/
 ```
 
-| Body field | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `name`      | `string` | **Required**. min 3, max 30 symbols |
-| `email`      | `string` | **Required**.  |
-| `number`      | `number` | **Required**. integer number |
-| `favorite`      | `boolean` | **Optional**. false by default |
+| Body field | Type      | Description                         |
+| :--------- | :-------- | :---------------------------------- |
+| `name`     | `string`  | **Required**. min 3, max 30 symbols |
+| `email`    | `string`  | **Required**.                       |
+| `number`   | `number`  | **Required**. integer number        |
+| `favorite` | `boolean` | **Optional**. false by default      |
 
 #### Get item by ID
 
@@ -57,12 +48,12 @@ The project was created by me and reviewed by the mentor [Nadya Hristuk](https:/
 | `id`      | `string` | **Required**. Id of item to fetch |
 
 TO UPDATE CONTACT'S INFO AT LEAST ONE OF THE FOLLOWING FIELDS SHOULD BE PROVIDED
-| Body field | Type     | Description                       |
+| Body field | Type | Description |
 | :-------- | :------- | :-------------------------------- |
-| `name`      | `string` | **Optional**. min 3, max 30 symbols |
-| `email`      | `string` | **Optional**.  |
-| `number`      | `number` | **Optional**. integer number |
-| `favorite`      | `boolean` | **Optional**. false by default |
+| `name` | `string` | **Optional**. min 3, max 30 symbols |
+| `email` | `string` | **Optional**. |
+| `number` | `number` | **Optional**. integer number |
+| `favorite` | `boolean` | **Optional**. false by default |
 
 #### Update contact's status by ID
 
@@ -75,9 +66,9 @@ TO UPDATE CONTACT'S INFO AT LEAST ONE OF THE FOLLOWING FIELDS SHOULD BE PROVIDED
 | `id`      | `string` | **Required**. Id of item to fetch |
 
 TO UPDATE CONTACT'S STATUS THE FOLLOWING FIELD SHOULD BE PROVIDED
-| Body field | Type     | Description                       |
+| Body field | Type | Description |
 | :-------- | :------- | :-------------------------------- |
-| `favorite`      | `boolean` | **Required**.|
+| `favorite` | `boolean` | **Required**.|
 
 #### Delete contact by ID
 
@@ -89,14 +80,11 @@ TO UPDATE CONTACT'S STATUS THE FOLLOWING FIELD SHOULD BE PROVIDED
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `string` | **Required**. Id of item to fetch |
 
-
-
 ## Tech Stack
 
 **Back** Node.JS, MongoDB.
 
-**Libs:**  Express, Joi, Mongoose, Morgan, Dotenv
-
+**Libs:** Express, Joi, Mongoose, Morgan, Dotenv
 
 ## Run Locally
 
@@ -115,7 +103,7 @@ Go to the project directory
 Install dependencies
 
 ```bash
-  npm install 
+  npm install
 ```
 
 Start the server
@@ -127,7 +115,6 @@ npm run lint — check with eslint
 npm lint:fix — check and automatically fix with eslint
 ```
 
-
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
@@ -138,13 +125,11 @@ PORT= /preferable local host port number/ - optional
 
 ## Acknowledgements
 
- - [MongoDB Atlas](https://www.mongodb.com/atlas/database)
- - [MongoDB Compass](https://www.mongodb.com/try/download/shell)
- - [Mongoose](https://mongoosejs.com/)
- - [Express](https://www.npmjs.com/package/express)
- - [Morgan](https://www.npmjs.com/package/morgan)
- - [Joi](https://github.com/hapijs/joi)
- - [Postman](https://www.postman.com/)
-
-  
- 
+- [MongoDB Atlas](https://www.mongodb.com/atlas/database)
+- [MongoDB Compass](https://www.mongodb.com/try/download/shell)
+- [Mongoose](https://mongoosejs.com/)
+- [Express](https://www.npmjs.com/package/express)
+- [Morgan](https://www.npmjs.com/package/morgan)
+- [Joi](https://github.com/hapijs/joi)
+- [Postman](https://www.postman.com/)
+- [BcryptJs](https://github.com/dcodeIO/bcrypt.js#readme)
