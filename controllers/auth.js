@@ -1,11 +1,10 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const { SECRET_KEY } = process.env;
-
 const { User } = require("../models/user");
-
 const { HttpError, ctrlWrapper } = require("../helpers");
+
+const { SECRET_KEY } = process.env;
 
 const register = async (req, res) => {
   const { email, password, subscription } = req.body;
@@ -34,6 +33,10 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { email, password } = req.body;
+
+  if (!email || !password) {
+    throw HttpError(400, "Email or password is missing");
+  }
 
   const user = await User.findOne({ email });
 
