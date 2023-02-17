@@ -123,6 +123,8 @@ DB_HOST= /link to your MongoDB database/ - is a must
 
 PORT= /preferable local host port number/ - optional
 
+SECRET_KEY = /randomly generated key, f.e.via https://acte.ltd/utils/randomkeygen/ - is a must
+
 ## Acknowledgements
 
 - [MongoDB Atlas](https://www.mongodb.com/atlas/database)
