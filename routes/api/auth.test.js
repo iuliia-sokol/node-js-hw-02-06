@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 const request = require("supertest");
+const bcrypt = require("bcryptjs");
 const should = require("should");
 
 require("dotenv").config();
-
-// jest.useFakeTimers("legacy");
 
 mongoose.set("strictQuery", false);
 
@@ -24,28 +23,44 @@ describe("test login route", () => {
   });
 
   afterEach((done) => {
-    mongoose.connection.db.dropCollection(() => {
-      mongoose.connection.close(() => done());
-    });
+    mongoose.disconnect(() => done());
   });
 
-  test("test login route", async () => {
-    const loginUser = {
-      email: "bla2@gmail.com",
-      password: "123456",
-    };
+  test("test login", async () => {
+    const existingEmail = "example@gmail.com";
+    const tmpPass = "password_hash";
 
-    const response = await request(app)
+    const encryptedPassword = await bcrypt.hash(tmpPass, 10);
+    const user = await User.create({
+      email: existingEmail,
+      password: encryptedPassword,
+    });
+
+    const response = await request(server)
       .post("/api/users/login")
-      .send(loginUser);
+      .set("Content-Type", "application/json")
+      .send({ email: existingEmail, password: tmpPass })
+      .expect("Content-Type", /json/)
+      .expect(200);
+
     expect(response.statusCode).toBe(200);
 
-    const { body } = response;
+    const responseBody = response.body;
 
-    const user = body.user;
+    responseBody.should.have.property("token").which.is.a.String();
 
-    user.should.have.property("subscription").which.is.a.String();
-    user.should.have.property("email").which.is.a.String();
-    body.should.have.property("token");
+    const createdUser = responseBody.should.have
+      .property("user")
+      .which.is.a.Object();
+
+    createdUser.obj.should.have.property("email").which.is.a.String();
+    createdUser.obj.should.have.property("subscription").which.is.a.String();
+    createdUser.obj.should.not.have.property("password");
+
+    const existedUser = await User.findOne({ email: responseBody.user.email });
+
+    should.exist(existedUser);
+
+    await User.findByIdAndDelete(user._id);
   });
 });
