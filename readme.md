@@ -43,13 +43,24 @@ The project was created by me and reviewed by the mentor [Nadya Hristuk](https:/
 #### Update subscription status
 
 ```http
-  PATCH/api/users/
+  PATCH/api/users/subscription
 ```
 
 | Parameter      | Type     | Description                        |
 | :------------- | :------- | :--------------------------------- |
 | `token`        | `string` | **Required**                       |
 | `subscription` | `string` | **Required**. "starter" by default |
+
+#### Update avatar
+
+```http
+  PATCH/api/users/avatars
+```
+
+| Parameter | Type     | Description   |
+| :-------- | :------- | :------------ |
+| `token`   | `string` | **Required**  |
+| `avatar`  | `file`   | **Required**. |
 
 #### Logout
 
