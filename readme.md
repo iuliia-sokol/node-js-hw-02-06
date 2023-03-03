@@ -19,6 +19,26 @@ The project was created by me and reviewed by the mentor [Nadya Hristuk](https:/
 | `email`    | `string` | **Required**                |
 | `password` | `string` | **Required**. min 6 symbols |
 
+#### Email verification
+
+```http
+  GET/api/users/verify/:verificationCode
+```
+
+| Parameter          | Type     | Description  |
+| :----------------- | :------- | :----------- |
+| `verificationCode` | `string` | **Required** |
+
+#### Resend email verification code
+
+```http
+  POST/api/users/verify
+```
+
+| Parameter | Type     | Description  |
+| :-------- | :------- | :----------- |
+| `email`   | `string` | **Required** |
+
 #### Login
 
 ```http
@@ -148,7 +168,7 @@ TO UPDATE CONTACT'S STATUS THE FOLLOWING FIELD SHOULD BE PROVIDED
 
 **Back** Node.JS, MongoDB.
 
-**Libs:** Express, Joi, Mongoose, Morgan, Dotenv, BcryptJs, Jsonwebtoken
+**Libs:** Express, Joi, Mongoose, Morgan, Dotenv, BcryptJs, Jsonwebtoken, Nanoid, Gravatar, Multer, Jimp, Should, Supertest,Sendgrid
 
 ## Run Locally
 
@@ -173,6 +193,7 @@ Install dependencies
 Start the server
 
 ```bash
+npm run test - login route test,
 npm start - production
 npm run start:dev — development
 npm run lint — check with eslint
@@ -189,6 +210,10 @@ PORT= /preferable local host port number/ - optional
 
 SECRET_KEY = /randomly generated key, f.e.via https://acte.ltd/utils/randomkeygen/ - is a must
 
+SENDGRID_API_KEY= /you can get one here: https://sendgrid.com/ / - is a must
+
+BASE_URL= /your server's location/ - is a must
+
 ## Acknowledgements
 
 - [MongoDB Atlas](https://www.mongodb.com/atlas/database)
@@ -199,3 +224,4 @@ SECRET_KEY = /randomly generated key, f.e.via https://acte.ltd/utils/randomkeyge
 - [Joi](https://github.com/hapijs/joi)
 - [Postman](https://www.postman.com/)
 - [BcryptJs](https://github.com/dcodeIO/bcrypt.js#readme)
+- [Sendgrid](https://sendgrid.com/)

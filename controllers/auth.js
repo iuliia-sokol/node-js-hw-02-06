@@ -66,7 +66,7 @@ const verify = async (req, res) => {
   });
 
   res.json({
-    message: "Verification success",
+    message: "Verification successful",
   });
 };
 
@@ -78,19 +78,19 @@ const resendVerifyEmail = async (req, res) => {
   }
 
   if (user.verify) {
-    throw HttpError(404, "Email was already verified");
+    throw HttpError(400, "Verification has already been passed");
   }
 
   const verifyEmail = {
     to: email,
-    subject: "Verify email",
+    subject: "Email verification",
     html: `<a target="_blank" href="${BASE_URL}/api/users/verify/${user.verificationCode}">Click verify email</a>`,
   };
 
   await sendEmail(verifyEmail);
 
   res.json({
-    message: "Email send success",
+    message: "Verification email sent",
   });
 };
 
